@@ -39,6 +39,7 @@ def main():
         df_final = df_final.rename(columns={"df_churn": "target"})
     
     df_final["target"] = df_final["target"].fillna(0).astype(int)
+    df_final.drop(columns=["unique_customer_identifier", "datevalue"],inplace=True)
 
     # Save df_model
     model_path = os.path.join(OUTPUT_DIR, "df_model.csv")
@@ -51,12 +52,14 @@ def main():
     # Train models
     results, X_train, y_train = train_models(df_final, categorical, numeric)
 
+    # Save results
+    save_results(results)
+    
     # RFE
     rankings = run_rfe(X_train, y_train, categorical, numeric)
     rankings.to_csv(os.path.join(OUTPUT_DIR, "feature_rankings.csv"), index=False)
 
-    # Save results
-    save_results(results)
+
 
     print("Modelling complete.")
 
