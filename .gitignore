@@ -1,0 +1,6 @@
+data/
+*.parquet
+*.csv
+.env
+__pycache__/
+models/*.pkl
