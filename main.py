@@ -56,8 +56,8 @@ def main():
     save_results(results)
     
     # RFE
-    rankings = run_rfe(X_train, y_train, categorical, numeric)
-    rankings.to_csv(os.path.join(OUTPUT_DIR, "feature_rankings.csv"), index=False)
+    #rankings = run_rfe(X_train, y_train, categorical, numeric)
+    #rankings.to_csv(os.path.join(OUTPUT_DIR, "feature_rankings.csv"), index=False)
 
 
 
